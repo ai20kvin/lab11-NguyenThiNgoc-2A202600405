@@ -34,6 +34,7 @@ def content_filter(response: str) -> dict:
     This is a deterministic, fast scanner that prevents leaked PII (IDs, Phones) 
     and technical secrets (API Keys) from leaving the system. Regex is more 
     reliable than LLMs for matching specific numerical patterns.
+    """
     issues = []
     redacted = response
 
