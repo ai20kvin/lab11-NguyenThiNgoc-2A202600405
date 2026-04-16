@@ -70,6 +70,7 @@ def topic_filter(user_input: str) -> bool:
     Prevents the agent from being used as a general-purpose AI (saving costs) 
     and stops users from discussing restricted topics (weapons, drugs) 
     that are irrelevant to VinBank's services.
+    """
     input_lower = user_input.lower()
 
     # 1. Check blocked topics first (highest priority)
