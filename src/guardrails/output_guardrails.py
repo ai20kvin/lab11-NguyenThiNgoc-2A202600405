@@ -112,6 +112,7 @@ async def llm_safety_check(response_text: str) -> dict:
     Unlike regex, the LLM Judge can understand context and nuance. It catches 
     hallucinations, subtle emotional manipulation, or harmful advice that 
     doesn't follow a simple pattern.
+    """
     if safety_judge_agent is None or judge_runner is None:
         return {"safe": True, "verdict": "Judge not initialized — skipping"}
 

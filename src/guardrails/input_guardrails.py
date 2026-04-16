@@ -35,6 +35,7 @@ def detect_injection(user_input: str) -> bool:
     This is the first line of defense against direct prompt injection attacks. 
     It catches high-intent malicious strings like 'ignore all instructions' 
     using low-latency regex matching before any LLM processing occurs.
+    """
     INJECTION_PATTERNS = [
         r"ignore (all )?(previous|above) instructions",
         r"you are now",
