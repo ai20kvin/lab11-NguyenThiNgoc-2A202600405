@@ -1,9 +1,9 @@
-"""
-Lab 11 — Part 4: Human-in-the-Loop Design
-  TODO 12: Confidence Router
-  TODO 13: Design 3 HITL decision points
-"""
+import sys
+from pathlib import Path
 from dataclasses import dataclass
+
+# Add the project root (src) to sys.path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 
 # ============================================================

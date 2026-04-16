@@ -1,10 +1,10 @@
-"""
-Lab 11 — Part 3: Before/After Comparison & Security Testing Pipeline
-  TODO 10: Rerun 5 attacks with guardrails (before vs after)
-  TODO 11: Automated security testing pipeline
-"""
 import asyncio
+import sys
+from pathlib import Path
 from dataclasses import dataclass, field
+
+# Add the project root (src) to sys.path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from core.utils import chat_with_agent
 from attacks.attacks import adversarial_prompts, run_attacks

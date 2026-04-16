@@ -1,5 +1,5 @@
 # Part B: Individual Report - Day 11 Defense-in-Depth Pipeline
-**Student Name:** NguyenThiNgoc  
+**Student Name:** NguyenThiNgoc - 2A202600405
 **Course:** AI in Action - Day 11  
 **Project:** Defense-in-Depth for VinBank AI Assistant  
 

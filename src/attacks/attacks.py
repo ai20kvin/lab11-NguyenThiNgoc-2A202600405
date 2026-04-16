@@ -1,12 +1,11 @@
-"""
-Lab 11 — Part 1: Adversarial Attacks
-  TODO 1: Write 5 adversarial prompts
-  TODO 2: Generate attack test cases with AI
-"""
 import json
+import sys
+from pathlib import Path
+
+# Add the project root (src) to sys.path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from google import genai
-
 from core.utils import chat_with_agent
 
 

@@ -1,8 +1,9 @@
-"""
-Lab 11 — Part 2C: NeMo Guardrails
-  TODO 9: Define Colang rules for banking safety
-"""
+import sys
+from pathlib import Path
 import textwrap
+
+# Add the project root (src) to sys.path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 try:
     from nemoguardrails import RailsConfig, LLMRails
