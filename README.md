@@ -52,7 +52,7 @@ Day-11-Guardrails-HITL-Responsible-AI/
 
 ```bash
 pip install -r requirements.txt
-export GOOGLE_API_KEY="AQ.Ab8RN6LvH_tmLSp41w_7UQKffKOlOPHyWdXO3VUBMNHA7d__5Q"
+export GOOGLE_API_KEY="google_api_key"
 jupyter notebook notebooks/lab11_guardrails_hitl.ipynb
 ```
 
