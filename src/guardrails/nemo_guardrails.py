@@ -138,7 +138,13 @@ nemo_rails = None
 
 
 def init_nemo():
-    """Initialize NeMo Guardrails with the Colang config."""
+    """Initialize NeMo Guardrails with the Colang config.
+
+    Why this is needed:
+    NeMo Guardrails provides a declarative, conversational-aware layer 
+    that catches multi-turn attacks and semantic variations that simple 
+    regex might miss. It's the "intelligence" layer of the defense system.
+    """
     global nemo_rails
     if not NEMO_AVAILABLE:
         print("Skipping NeMo init — nemoguardrails not installed.")

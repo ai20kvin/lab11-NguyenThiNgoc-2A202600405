@@ -30,12 +30,10 @@ from core.utils import chat_with_agent
 def content_filter(response: str) -> dict:
     """Filter response for PII, secrets, and harmful content.
 
-    Args:
-        response: The LLM's response text
-
-    Returns:
-        dict with 'safe', 'issues', and 'redacted' keys
-    """
+    Why this is needed:
+    This is a deterministic, fast scanner that prevents leaked PII (IDs, Phones) 
+    and technical secrets (API Keys) from leaving the system. Regex is more 
+    reliable than LLMs for matching specific numerical patterns.
     issues = []
     redacted = response
 
@@ -109,12 +107,10 @@ def _init_judge():
 async def llm_safety_check(response_text: str) -> dict:
     """Use LLM judge to check if response is safe.
 
-    Args:
-        response_text: The agent's response to evaluate
-
-    Returns:
-        dict with 'safe' (bool) and 'verdict' (str)
-    """
+    Why this is needed:
+    Unlike regex, the LLM Judge can understand context and nuance. It catches 
+    hallucinations, subtle emotional manipulation, or harmful advice that 
+    doesn't follow a simple pattern.
     if safety_judge_agent is None or judge_runner is None:
         return {"safe": True, "verdict": "Judge not initialized — skipping"}
 
@@ -137,7 +133,13 @@ async def llm_safety_check(response_text: str) -> dict:
 # ============================================================
 
 class OutputGuardrailPlugin(base_plugin.BasePlugin):
-    """Plugin that checks agent output before sending to user."""
+    """Plugin that checks agent output before sending to user.
+    
+    Why this is needed:
+    This layer acts as the final "Data Loss Prevention" (DLP) mechanism. 
+    By intercepting the output before the user sees it, we can redact 
+    sensitive data and block unsafe responses entirely.
+    """
 
     def __init__(self, use_llm_judge=True):
         super().__init__(name="output_guardrail")

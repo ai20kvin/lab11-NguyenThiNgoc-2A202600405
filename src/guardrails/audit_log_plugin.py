@@ -8,6 +8,12 @@ class AuditLogPlugin(base_plugin.BasePlugin):
     AuditLogPlugin: Records every interaction between the user and the AI.
     Logs include input text, output text, which guardrail blocked the request (if any),
     and the latency of the request.
+
+    Why this is needed:
+    Security monitoring and incident response require a detailed history 
+    of interactions. This layer provides evidence for forensics, helps 
+    identify attack patterns over time, and ensures compliance with 
+    financial regulations.
     """
     def __init__(self):
         super().__init__(name="audit_log")

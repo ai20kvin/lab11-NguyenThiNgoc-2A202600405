@@ -31,12 +31,10 @@ from core.config import ALLOWED_TOPICS, BLOCKED_TOPICS
 def detect_injection(user_input: str) -> bool:
     """Detect prompt injection patterns in user input.
 
-    Args:
-        user_input: The user's message
-
-    Returns:
-        True if injection detected, False otherwise
-    """
+    Why this is needed:
+    This is the first line of defense against direct prompt injection attacks. 
+    It catches high-intent malicious strings like 'ignore all instructions' 
+    using low-latency regex matching before any LLM processing occurs.
     INJECTION_PATTERNS = [
         r"ignore (all )?(previous|above) instructions",
         r"you are now",
@@ -68,12 +66,10 @@ def detect_injection(user_input: str) -> bool:
 def topic_filter(user_input: str) -> bool:
     """Check if input is off-topic or contains blocked topics.
 
-    Args:
-        user_input: The user's message
-
-    Returns:
-        True if input should be BLOCKED (off-topic or blocked topic)
-    """
+    Why this is needed:
+    Prevents the agent from being used as a general-purpose AI (saving costs) 
+    and stops users from discussing restricted topics (weapons, drugs) 
+    that are irrelevant to VinBank's services.
     input_lower = user_input.lower()
 
     # 1. Check blocked topics first (highest priority)
@@ -101,7 +97,13 @@ def topic_filter(user_input: str) -> bool:
 # ============================================================
 
 class InputGuardrailPlugin(base_plugin.BasePlugin):
-    """Plugin that blocks bad input before it reaches the LLM."""
+    """Plugin that blocks bad input before it reaches the LLM.
+    
+    Why this is needed:
+    By running these checks in a plugin, we ensure that malicious queries 
+    never reach the agent logic, protecting the system from potentially 
+    poisoning the conversation state or triggering expensive LLM calls.
+    """
 
     def __init__(self):
         super().__init__(name="input_guardrail")
